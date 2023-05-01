@@ -3,6 +3,7 @@ import MapView from '@arcgis/core/views/MapView';
 import Map from '@arcgis/core/Map';
 import config from '@arcgis/core/config';
 import Locate from '@arcgis/core/widgets/Locate';
+import Search from '@arcgis/core/widgets/Search';
 
 function App() {
   const mapDiv = useRef(null);
@@ -31,6 +32,11 @@ function App() {
         },
       });
       view.ui.add(locate, 'top-left');
+
+      const search = new Search({
+        view,
+      });
+      view.ui.add(search, 'top-right');
     }
   }, []);
 
