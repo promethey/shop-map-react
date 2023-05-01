@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import MapView from '@arcgis/core/views/MapView';
 import Map from '@arcgis/core/Map';
 import config from '@arcgis/core/config';
@@ -10,9 +10,11 @@ import {
 import getLocateWidget from '../widgets/Locate';
 import getSearchWidet from '../widgets/Search';
 import shopList from '../data/shopList';
+import AppContext from '../context/AppContext';
 
 function App() {
   const mapDiv = useRef(null);
+  const [currentShop, setCurrentShop] = useContext(AppContext); // eslint-disable-line
 
   useEffect(() => {
     if (mapDiv.current) {
