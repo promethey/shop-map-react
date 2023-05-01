@@ -6,3 +6,4 @@ Application for displaying stores on the map (name, address, contacts, photos, s
 - React
 - Material UI
 - ArcGIS
+- Normalize CSS
