@@ -2,14 +2,14 @@ import React, { useRef, useEffect } from 'react';
 import MapView from '@arcgis/core/views/MapView';
 import Map from '@arcgis/core/Map';
 import config from '@arcgis/core/config';
-import * as locator from '@arcgis/core/rest/locator';
 import Graphic from '@arcgis/core/Graphic';
+import GraphicsLayer from '@arcgis/core/layers/GraphicsLayer';
 import {
-  API_KEY, BASEMAP, LOCATION, ZOOM_LEVEL, LOCATOR_URL,
-} from '../config/arcgis_config';
+  API_KEY, BASEMAP, LOCATION, ZOOM_LEVEL,
+} from '../config/arcgisConfig';
 import getLocateWidget from '../widgets/Locate';
 import getSearchWidet from '../widgets/Search';
-import getSelectPlace from '../widgets/SelectPlace';
+import shopList from '../data/shopList';
 
 function App() {
   const mapDiv = useRef(null);
@@ -37,60 +37,48 @@ function App() {
       const search = getSearchWidet(view);
       view.ui.add(search, 'top-right');
 
-      // Select widget
-      const select = getSelectPlace();
-      view.ui.add(select, 'top-right');
+      // Add graphic layer
+      const graphicsLayer = new GraphicsLayer();
+      map.add(graphicsLayer);
 
-      // Find places and add them to the map
-      function findPlaces(category, pt) { // eslint-disable-line
-        locator.addressToLocations(LOCATOR_URL, {
-          location: pt,
-          categories: [category],
-          maxLocations: 25,
-          outFields: ['Place_addr', 'PlaceName'],
-        }).then((results) => {
-          view.popup.close();
-          view.graphics.removeAll();
+      function createPoligon(layer, data) { // eslint-disable-line
+        // Create a polygon geometry
+        const polygon = {
+          type: 'polygon',
+          rings: data.rings,
+        };
 
-          results.forEach((result) => {
-            view.graphics.add(
-              new Graphic({
-                attributes: result.attributes, // Data attributes returned
-                geometry: result.location, // Point returned
-                symbol: {
-                  type: 'simple-marker',
-                  color: '#000000',
-                  size: '12px',
-                  outline: {
-                    color: '#ffffff',
-                    width: '2px',
-                  },
-                },
-                popupTemplate: {
-                  title: '{PlaceName}', // Data attribute names
-                  content: '{Place_addr}',
-                },
-              }),
-            );
-          });
+        const popupTemplate = {
+          title: '{Name}',
+          content: '{Description}',
+        };
+
+        const attributes = {
+          Name: data.name,
+          Description: data.description,
+        };
+
+        const polygonGraphic = new Graphic({
+          geometry: polygon,
+          symbol: {
+            type: 'simple-fill',
+            color: [227, 139, 79, 0.8], // Orange, opacity 80%
+            outline: {
+              color: [255, 255, 255],
+              width: 1,
+            },
+          },
+          attributes,
+          popupTemplate,
         });
+        graphicsLayer.add(polygonGraphic);
       }
 
-      // Search for places in center of map
-      view.watch('stationary', (val) => {
-        if (val) {
-          findPlaces(select.value, view.center);
-        }
-      });
-
-      // Listen for category changes and find places
-      select.addEventListener('change', (event) => {
-        findPlaces(event.target.value, view.center);
-      });
+      shopList.forEach((shop) => createPoligon(graphicsLayer, shop));
     }
   }, []);
 
-  return <div className="mapDiv" style={{ height: '100%' }} ref={mapDiv} />;
+  return <div style={{ height: '100%' }} ref={mapDiv} />;
 }
 
 export default App;

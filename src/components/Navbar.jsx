@@ -22,7 +22,11 @@ function Navbar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ textTransform: 'uppercase', flexGrow: 1 }}
+          >
             ShopMap
           </Typography>
           <Button color="inherit">
