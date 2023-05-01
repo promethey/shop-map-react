@@ -2,20 +2,21 @@ import React, { useRef, useEffect } from 'react';
 import MapView from '@arcgis/core/views/MapView';
 import Map from '@arcgis/core/Map';
 import config from '@arcgis/core/config';
-import Locate from '@arcgis/core/widgets/Locate';
-import Search from '@arcgis/core/widgets/Search';
 import * as locator from '@arcgis/core/rest/locator';
 import Graphic from '@arcgis/core/Graphic';
 import {
-  API, BASEMAP, LOCATION, ZOOM_LEVEL,
+  API_KEY, BASEMAP, LOCATION, ZOOM_LEVEL, LOCATOR_URL,
 } from '../config/arcgis_config';
+import getLocateWidget from '../widgets/Locate';
+import getSearchWidet from '../widgets/Search';
+import getSelectPlace from '../widgets/SelectPlace';
 
 function App() {
   const mapDiv = useRef(null);
 
   useEffect(() => {
     if (mapDiv.current) {
-      config.apiKey = API;
+      config.apiKey = API_KEY;
 
       const map = new Map({
         basemap: BASEMAP,
@@ -28,51 +29,21 @@ function App() {
         map,
       });
 
-      const locate = new Locate({
-        view,
-        useHeadingEnabled: false,
-        goToOverride(view, options) { // eslint-disable-line
-          options.target.scale = 1500; // eslint-disable-line
-          return view.goTo(options.target);
-        },
-      });
+      // Locate widget
+      const locate = getLocateWidget(view);
       view.ui.add(locate, 'top-left');
 
-      const search = new Search({
-        view,
-      });
+      // Search widget
+      const search = getSearchWidet(view);
       view.ui.add(search, 'top-right');
 
-      // craete select options
-      const places = [
-        'Choose a place type...',
-        'Parks and Outdoors',
-        'Coffee shop',
-        'Gas station',
-        'Food',
-        'Hotel',
-      ];
-
-      const select = document.createElement('select');
-      select.classList.add('esri-widget', 'esri-select');
-      select.style.width = '175px';
-      select.style.fontFamily = 'sans-serif';
-      select.style.fontSize = '1em';
-
-      places.forEach((value) => {
-        const option = document.createElement('option');
-        option.value = value;
-        option.textContent = value;
-        select.appendChild(option);
-      });
-
+      // Select widget
+      const select = getSelectPlace();
       view.ui.add(select, 'top-right');
-
-      const locatorUrl = 'http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer';
 
       // Find places and add them to the map
       function findPlaces(category, pt) { // eslint-disable-line
-        locator.addressToLocations(locatorUrl, {
+        locator.addressToLocations(LOCATOR_URL, {
           location: pt,
           categories: [category],
           maxLocations: 25,
@@ -95,7 +66,6 @@ function App() {
                     width: '2px',
                   },
                 },
-
                 popupTemplate: {
                   title: '{PlaceName}', // Data attribute names
                   content: '{Place_addr}',
