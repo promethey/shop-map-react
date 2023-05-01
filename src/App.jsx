@@ -14,7 +14,7 @@ function App() {
         <Box>
           <Grid container spacing={2}>
             <Grid item xs={12} lg={8}>
-              <Box sx={{ height: 700 }}>
+              <Box sx={{ height: 600 }}>
                 <ViewMap />
               </Box>
             </Grid>
