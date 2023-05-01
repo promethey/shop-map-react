@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import MapView from '@arcgis/core/views/MapView';
 import Map from '@arcgis/core/Map';
 import config from '@arcgis/core/config';
+import Locate from '@arcgis/core/widgets/Locate';
 
 function App() {
   const mapDiv = useRef(null);
@@ -20,6 +21,16 @@ function App() {
         zoom: 11, // Zoom level
         map,
       });
+
+      const locate = new Locate({
+        view,
+        useHeadingEnabled: false,
+        goToOverride(view, options) { // eslint-disable-line
+          options.target.scale = 1500; // eslint-disable-line
+          return view.goTo(options.target);
+        },
+      });
+      view.ui.add(locate, 'top-left');
     }
   }, []);
 
