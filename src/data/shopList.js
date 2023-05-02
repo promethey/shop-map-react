@@ -1,5 +1,6 @@
 export default [
   {
+    id: '001',
     name: 'Burger King',
     address: {
       street: 'Sarayshyk 13a',
@@ -9,8 +10,9 @@ export default [
     rating: 4,
     contacts: { phone: '8-778-998-45-45', site: 'burgerking.kz' },
     description: 'The famous fast food need where grilled burgers, fries and smoothies grow.',
-    imgages: [
-      { src: '', alt: '' },
+    images: [
+      { src: '/img/burgerking.jpeg', alt: 'Burger king' },
+      { src: '/img/burgerking2.jpeg', alt: 'Burger king 2' },
     ],
     location: [71.435913, 51.133387],
     rings: [
@@ -22,6 +24,7 @@ export default [
     ],
   },
   {
+    id: '002',
     name: 'MEGA Silk Way',
     address: {
       street: 'Kabanbay Batyra 62',

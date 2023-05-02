@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
-function ShopInfo({
+function ShopCard({
   shop: {
     name, rating, description, address, contacts, images,
   },
@@ -68,7 +68,7 @@ function ShopInfo({
   );
 }
 
-ShopInfo.propTypes = {
+ShopCard.propTypes = {
   shop: PropTypes.shape({
     name: PropTypes.string,
     rating: PropTypes.number,
@@ -86,4 +86,4 @@ ShopInfo.propTypes = {
   }).isRequired,
 };
 
-export default ShopInfo;
+export default ShopCard;
