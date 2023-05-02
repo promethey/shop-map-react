@@ -14,7 +14,7 @@ import getPoligonAndPoint from '../helpers/poligonAndPoint';
 
 function App() {
   const mapDiv = useRef(null);
-  const setCurrentShopId = useContext(AppContext); // eslint-disable-line
+  const { setCurrentShopId } = useContext(AppContext); // eslint-disable-line
 
   useEffect(() => {
     if (mapDiv.current) {
