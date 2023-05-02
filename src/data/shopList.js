@@ -63,6 +63,7 @@ export default [
     contacts: { phone: '8‒707‒222‒10‒60', site: 'asiapark.kz' },
     description: 'Shopping mall',
     images: [
+      { src: '/img/asiapark2.jpeg', alt: 'Asia Park' },
       { src: '/img/asiapark.jpeg', alt: 'Asia Park' },
     ],
     location: [71.411449, 51.128175],
