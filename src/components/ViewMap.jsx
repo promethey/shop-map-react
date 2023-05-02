@@ -26,7 +26,7 @@ function App() {
 
       const view = new MapView({ // eslint-disable-line
         container: mapDiv.current,
-        center: LOCATION, // Longitude, latitude (Astana)
+        center: LOCATION, // Longitude, latitude (default Astana)
         zoom: ZOOM_LEVEL,
         map,
       });

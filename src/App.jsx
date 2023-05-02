@@ -15,11 +15,12 @@ function App() {
 
   const getCurrentShop = (shopId) => shopList.find(({ id }) => id === shopId);
 
+  // eslintreact/jsx-no-constructed-context-values
   const currentShop = useMemo(() => ({ currentShopId, setCurrentShopId }), [currentShopId]);
 
   return (
     <AppContext.Provider value={currentShop}>
-      <div style={{ fontFamily: 'Roboto' }}>
+      <Box style={{ fontFamily: 'Roboto' }}>
         <Navbar />
         <Container maxWidth="xl" sx={{ my: 2 }}>
           <Box>
@@ -50,7 +51,7 @@ function App() {
             </Grid>
           </Box>
         </Container>
-      </div>
+      </Box>
     </AppContext.Provider>
   );
 }

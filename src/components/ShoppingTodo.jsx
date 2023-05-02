@@ -71,7 +71,7 @@ function ShoppingTodo() {
         <TextField
           variant="outlined"
           value={productName}
-          label="Product"
+          label="Product name (iPhone etc.)"
           fullWidth
           onChange={(event) => setProductName(event.target.value)}
           onKeyDown={(event) => {

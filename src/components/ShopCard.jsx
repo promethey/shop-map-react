@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import ShopCardName from './ShopCardName';
+import ShopCardRating from './ShopCardRating';
+import ShopCardDescription from './ShopCardDescription';
+import ShopCardAddress from './ShopCardAddress';
+import ShopCardPhone from './ShopCardPhone';
+import ShopCardSite from './ShopCardSite';
 
 function ShopCard({
   shop: {
@@ -13,42 +17,19 @@ function ShopCard({
 }) {
   return (
     <Box p={2} pb={3} sx={{ border: '1px solid #bdc3c7', borderRadius: '7px' }}>
-      <Typography variant="h6" sx={{ fontWeight: '700' }}>
-        {name}
-      </Typography>
-      <Box mb={1} sx={{ display: 'flex', alignItems: 'center' }}>
-        <Typography variant="p" sx={{ marginRight: '5px', color: 'gray' }}>
-          {rating}
-        </Typography>
-        <Rating name="read-only" value={rating} readOnly />
-      </Box>
+      <ShopCardName name={name} />
+      <ShopCardRating rating={rating} />
       {description && (
-        <Typography variant="p" display="block" mb={2} sx={{ color: 'gray' }}>
-          {description}
-        </Typography>
+        <ShopCardDescription description={description} />
       )}
       {address && (
-        <Typography variant="p" display="block" mt={2}>
-          <strong>Address:</strong>
-          {' '}
-          {address.street && `st. ${address.street}`}
-          {address.city && `, ${address.city}`}
-          {address.postCode && `, ${address.postCode}`}
-        </Typography>
+        <ShopCardAddress address={address} />
       )}
       {contacts.phone && (
-        <Typography variant="p" display="block" mt={2}>
-          <strong>Phone:</strong>
-          {' '}
-          {contacts.phone}
-        </Typography>
+        <ShopCardPhone phone={contacts.phone} />
       )}
-      {contacts?.site && (
-        <Typography variant="p" display="block" mt={2}>
-          <strong>Site:</strong>
-          {' '}
-          <a href={`https://${contacts.site}`}>{contacts.site}</a>
-        </Typography>
+      {contacts.site && (
+        <ShopCardSite site={contacts.site} />
       )}
       {images && (
         <ImageList sx={{ height: 500 }} cols={1}>
