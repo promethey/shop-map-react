@@ -16,7 +16,7 @@ function ShopCardRating({ rating }) {
 }
 
 ShopCardRating.propTypes = {
-  rating: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
 };
 
 export default ShopCardRating;

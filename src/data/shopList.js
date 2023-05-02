@@ -1,26 +1,29 @@
 export default [
   {
     id: '001',
-    name: 'Burger King',
+    name: 'Khan Shatyr',
     address: {
-      street: 'Sarayshyk 13a',
+      street: 'Turan, 37',
       city: 'Astana',
-      postCode: '020000',
+      postCode: '010000',
     },
-    rating: 4,
-    contacts: { phone: '8-778-998-45-45', site: 'burgerking.kz' },
-    description: 'The famous fast food need where grilled burgers, fries and smoothies grow.',
+    rating: 4.6,
+    contacts: { phone: '8-717-257-26-26', site: 'khanshatyr.com' },
+    description: 'Shopping mall',
     images: [
-      { src: '/img/burgerking.jpeg', alt: 'Burger king' },
-      { src: '/img/burgerking2.jpeg', alt: 'Burger king 2' },
+      { src: '/img/khanshatyr.jpeg', alt: 'Khan Shatyr' },
+      { src: '/img/khanshatyr2.jpeg', alt: 'Khan Shatyr 2' },
     ],
-    location: [71.435913, 51.133387],
+    location: [71.403206, 51.132563],
     rings: [
-      [71.435684, 51.133398], // Longitude, latitude
-      [71.435705, 51.133460], // Longitude, latitude
-      [71.436089, 51.133406], // Longitude, latitude
-      [71.436143, 51.133382], // Longitude, latitude
-      [71.436122, 51.133334], // Longitude, latitude
+      [71.401743, 51.132767], // Longitude, latitude 51.132767, 71.401743
+      [71.402055, 51.131780], // Longitude, latitude 51.131780, 71.402055
+      [71.403399, 51.131302], // Longitude, latitude 51.131302, 71.403399
+      [71.404861, 51.131401], // Longitude, latitude 51.131401, 71.404861
+      [71.405886, 51.132141], // Longitude, latitude 51.132141, 71.405886
+      [71.405436, 51.133176], // Longitude, latitude 51.133176, 71.405436
+      [71.404265, 51.133619], // Longitude, latitude 51.133619, 71.404265
+      [71.402734, 51.133545], // Longitude, latitude 51.133545, 71.402734
     ],
   },
   {
@@ -46,6 +49,46 @@ export default [
       [71.411102, 51.089522], // Longitude, latitude
       [71.411413, 51.088154], // Longitude, latitude
       [71.409031, 51.088033], // Longitude, latitude
+    ],
+  },
+  {
+    id: '003',
+    name: 'Asia Park',
+    address: {
+      street: 'Kabanbay Batyra 21',
+      city: 'Astana',
+      postCode: '020000',
+    },
+    rating: 4.4,
+    contacts: { phone: '8‒707‒222‒10‒60', site: 'asiapark.kz' },
+    description: 'Shopping mall',
+    images: [
+      { src: '/img/asiapark.jpeg', alt: 'Asia Park' },
+    ],
+    location: [71.411449, 51.128175],
+    rings: [
+      [71.410425, 51.128611], // Longitude, latitude 51.128611, 71.410425
+      [71.412389, 51.128268], // Longitude, latitude 51.128268, 71.412389
+      [71.412839, 51.128261], // Longitude, latitude 51.128261, 71.412839
+      [71.412664, 51.128013], // Longitude, latitude 51.128013, 71.412664
+
+      [71.412453, 51.127508], // Longitude, latitude 51.127508, 71.412453
+
+      [71.411913, 51.127691], // Longitude, latitude 51.127691, 71.411913
+
+      [71.411172, 51.127812], // Longitude, latitude 51.127812, 71.411172
+
+      [71.410372, 51.127795], // Longitude, latitude 51.127795, 71.410372
+
+      [71.410327, 51.128333], // Longitude, latitude 51.128333, 71.410327
+
+      [71.410438, 51.128387], // Longitude, latitude 51.128387, 71.410438
+
+      [71.410470, 51.128436], // Longitude, latitude 51.128436, 71.410470
+      [71.410361, 51.128456], // Longitude, latitude 51.128456, 71.410361
+
+      [71.410361, 51.128456], // Longitude, latitude 51.128456, 71.410361
+      [71.410361, 51.128456], // Longitude, latitude 51.128456, 71.410361
     ],
   },
 ];

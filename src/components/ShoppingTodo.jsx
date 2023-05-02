@@ -44,7 +44,9 @@ function ShoppingTodo() {
       );
       if (localShoppingList) {
         setShoppingList(localShoppingList);
+        return;
       }
+      setShoppingList([]);
     }
   }, [currentShopId]);
 

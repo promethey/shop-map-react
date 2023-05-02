@@ -10,6 +10,7 @@ function ShoppingList({ list, onDelete }) {
       <List dense={false}>
         {list.map((shop, index) => (
           <ShoppingListItem
+            key={shop.id}
             shop={shop}
             index={index}
             onDelete={onDelete}
