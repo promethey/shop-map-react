@@ -31,8 +31,9 @@ export default [
     rating: 4.7,
     contacts: { phone: '8-705-956-70-10', site: 'mega.kz' },
     description: 'Shopping mall',
-    imgages: [
-      { src: '', alt: '' },
+    images: [
+      { src: '/img/megasilkway.jpeg', alt: 'MEGA Silk Way' },
+      { src: '/img/megasilkway2.jpeg', alt: 'MEGA Silk Way' },
     ],
     location: [71.407733, 51.089192],
     rings: [

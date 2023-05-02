@@ -31,6 +31,21 @@ function App() {
         map,
       });
 
+      view.on('click', (event) => {
+        // Get the coordinates of the click on the view
+        const lat = event.mapPoint.latitude;
+        const lon = event.mapPoint.longitude;
+
+        // !!!!! console.log(view.popup);
+
+        view.popup.open({
+          // Set the popup's title to the coordinates of the location
+          title: `Reverse geocode: [${lon}, ${lat}]`,
+          location: event.mapPoint, // Set the location of the popup to the clicked location
+          content: 'This is a point of interest', // content displayed in the popup
+        });
+      });
+
       // Locate widget
       const locate = getLocateWidget(view);
       view.ui.add(locate, 'top-left');
